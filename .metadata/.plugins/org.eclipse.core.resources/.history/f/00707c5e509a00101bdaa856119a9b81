@@ -1,0 +1,226 @@
+
+create database PIZZERIA;
+use  PIZZERIA;
+CREATE TABLE `EMPLEADO` (
+`id_emple` int NOT NULL AUTO_INCREMENT,
+`nom_emple` varchar(45) NOT NULL, 
+`ape_emple` varchar(45) NOT NULL, 
+`correo_emple` varchar(45) NOT NULL, 
+`contra_emple` varchar(45) NOT NULL,
+`telef_emple` char(9) NOT NULL,
+PRIMARY KEY (`id_emple`),
+UNIQUE KEY `id_emple_UNIQUE` (`id_emple`),
+UNIQUE KEY `correo_emple_UNIQUE` (`correo_emple`)
+);
+
+CREATE TABLE `TIENDA` (
+`id_tienda` int NOT NULL AUTO_INCREMENT,
+`nom_tienda` varchar(45) NOT NULL,
+`direcc_tienda` varchar(100) NOT NULL,
+PRIMARY KEY (`id_tienda`),  
+UNIQUE KEY `id_tienda_UNIQUE` (`id_tienda`)
+);
+
+CREATE TABLE `CATEGORIA` (
+`id_cate` int NOT NULL AUTO_INCREMENT,
+`descrip_cate` varchar(45) NOT NULL,
+PRIMARY KEY (`id_cate`),
+UNIQUE KEY `id_cate_UNIQUE` (`id_cate`)
+);
+
+CREATE TABLE `CLIENTE` (
+`id_cli` int NOT NULL AUTO_INCREMENT,
+`nom_cli` varchar(45) NOT NULL,
+`ape_cli` varchar(45) NOT NULL,
+`correo_cli` varchar(45) NOT NULL,
+`contra_cli` varchar(45) NOT NULL,
+`direcc_cli` varchar(100) NOT NULL,
+`telef_cli` char(9) NOT NULL,
+PRIMARY KEY (`id_cli`),
+UNIQUE KEY `id_cli_UNIQUE` (`id_cli`),
+UNIQUE KEY `correo_cli_UNIQUE` (`correo_cli`)
+);
+
+CREATE TABLE `PRODUCTO` (
+`id_prod` int NOT NULL AUTO_INCREMENT,
+`nombre_prod` varchar(100) NOT NULL,
+`descrip_prod` varchar(300) NOT NULL,
+`precio_unit` decimal(6,2) NOT NULL,
+`url_imagen` varchar(300) NOT NULL,
+`id_cate` int NOT NULL,
+PRIMARY KEY (`id_prod`),
+UNIQUE KEY `id_prod_UNIQUE` (`id_prod`),
+CONSTRAINT `id_cate` FOREIGN KEY (`id_cate`) REFERENCES `CATEGORIA` (`id_cate`)
+);
+
+CREATE TABLE `VENTA` (
+`id_boleta` int NOT NULL AUTO_INCREMENT,
+`num_boleta` char(23) NOT NULL,
+`fecha_emi` datetime NOT NULL,
+`tipo_pago` varchar(45) NOT NULL,
+`total` decimal(6,2) NOT NULL,
+`id_cli` int NOT NULL,
+`id_tienda` int NOT NULL,
+PRIMARY KEY (`id_boleta`),
+UNIQUE KEY `id_boleta_UNIQUE` (`id_boleta`),
+CONSTRAINT `id_cli` FOREIGN KEY (`id_cli`) REFERENCES `CLIENTE` (`id_cli`),
+CONSTRAINT `id_tienda` FOREIGN KEY (`id_tienda`) REFERENCES `TIENDA` (`id_tienda`)
+);
+
+CREATE TABLE `DETALLE_VENTA` (
+`id_prod` int NOT NULL,
+`id_boleta` int NOT NULL,
+`cantidad` int NOT NULL,
+`subTotal` decimal(6,2) NOT NULL,
+PRIMARY KEY (`id_prod`,`id_boleta`), 
+CONSTRAINT `id_prod` FOREIGN KEY (`id_prod`) REFERENCES `PRODUCTO` (`id_prod`),
+CONSTRAINT `id_boleta` FOREIGN KEY (`id_boleta`) REFERENCES `VENTA` (`id_boleta`)
+);
+
+
+SELECT*FROM EMPLEADO;
+SELECT*FROM TIENDA;
+SELECT*FROM CATEGORIA;
+SELECT*FROM CLIENTE;
+SELECT*FROM PRODUCTO;
+SELECT*FROM VENTA;
+SELECT*FROM DETALLE_VENTA;
+
+delete from CLIENTE where id_cli= '16';
+/*CATEGORIA*/
+INSERT INTO `CATEGORIA` VALUES ('1','Combos');
+INSERT INTO `CATEGORIA` VALUES ('2','Pizzas');
+INSERT INTO `CATEGORIA` VALUES ('3','Complementos');
+INSERT INTO `CATEGORIA` VALUES ('4','Dips');
+INSERT INTO `CATEGORIA` VALUES ('5','Bebidas');
+
+
+/*PRODUCTOS
+COMBOS */
+INSERT INTO `PRODUCTO` VALUES ('1', 'Pepperoni + 1.5 L', 'Pizza familiar con salsa de tomate, cubierta de queso 100% mozzarella y pepperoni. Acompañada con Pepsi 1.5 L', '38.40', 'https://images.rappi.pe/products/2092639712-1738887359754.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('2', 'Super Cheese Pepperoni + Gratis Crazy Bread', 'Pizza familiar pepperoni con borde de abundante queso parmesano y mantequilla de ajo. Acompañados con Crazy Breads', '49.80', 'https://images.rappi.pe/products/2092319003-1721154518966.jpg?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('3', 'Pepperoni + Crazy Pops Pepperoni', 'Pepperoni + Crazy Pops Pepperoni', '45.80', 'https://images.rappi.pe/products/2092669199-1741720612025.png?e=webp&d=511x511&q=85','1');
+INSERT INTO `PRODUCTO` VALUES ('4', 'Pizza Cu4tro + Canelitas', 'Pizza Cu4tro + Canelitas', '44.80', 'https://images.rappi.pe/products/2092669201-1741720760767.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('5', '3 Meat + Crazy Pops Pepperoni', '3 meat + crazy pops pepperoni', '55.80', 'https://images.rappi.pe/products/2092669207-1741721083016.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('6', 'Hula Hawaiian + Crazy Pops Hula', 'Hula Hawaiian + crazy pops hula', '55.80', 'https://images.rappi.pe/products/2092669229-1741721146272.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('7', 'Pizza Cuatro + Crazy Breads', 'Pizza con 2 rebanadas de pepperoni, 2 de queso, 2 de salchicha con pepperoni y 2 de pimientos verdes con jamón. Acompañado con 8 crazy breads', '43.80', 'https://images.rappi.pe/products/2092627019-1737770087841.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('8', 'Super Cheese Hula Hawaiian + Pepsi', 'Pizza con borde de abundante queso parmesano y mantequilla de ajo. Acompañado con Pepsi 1.5 L', '63.40', 'https://images.rappi.pe/products/2092627026-1737770494152.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('9', 'Super Cheese 3 Meat Treat + Canelitas Combo', 'Pizza 3 meat treat con borde de abundante queso parmesano y mantequilla de ajo. Acompañado con 8 unidades de canelitas con dip de dulce de leche', '68.40', 'https://images.rappi.pe/products/2092627028-1737771491393.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('10', 'Super Cheese Ultimate Supreme + Crazy Pops', 'Pizza ultimate supreme con borde de abundante queso parmesano y mantequilla de ajo. Acompañado con 4 deliciosas porciones rellenas de pepperoni y queso', '70.80', 'https://images.rappi.pe/products/2092627029-1737771829418.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('11', '3 Meat Treat + Pepsi 1.5 L', 'Pizza 3 Meat Treat acompañado con Pepsi 1.5 L', '51.40', 'https://images.rappi.pe/products/2092105526-1687879402270.jpg?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('12', 'Combo Pepperoni', 'Pizza familiar 36 cm. De pepperoni, bebida 500 ml a elección.', '33.90', 'https://images.rappi.pe/products/f50eb5ab-72a5-4ccb-98e8-ad9b599074c7-1651685354990.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('13', 'Comida Completa Pepperoni', 'Pizza familiar 36 cm. De pepperoni, 8 crazy breads, crazy sauce, bebida de 1.5 LT a elección.', '47.90', 'https://images.rappi.pe/products/7d78cfa9-4284-46fd-9c64-7be6aa8b99ae-1665986456477.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('14', 'Comida Completa Crazy Pops', 'Pizza Pepperoni, 4 unidades de Crazy Pops y bebida de 1.5 L. Solo se puede elegir 1 sabor de Crazy Pops', '48.90', 'https://images.rappi.pe/products/2092480202-1723765425842.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('15' , 'Combo Fiesta Pops', '2 pizzas Pepperoni, 4 unidades de Crazy Pops y bebida 2 L. Solo se puede elegir 1 sabor de Crazy Pops', '81.90', 'https://images.rappi.pe/products/2092480227-1723766897022.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('16', 'Pizza Super Cheese + Canelitas Combo + Pepsi 2 L', 'Pizza familiar Pepperoni con borde de abundante queso parmesano y mantequilla de ajo. Acompañado con Canelitas en combo y Pepsi 2 L', '56.90', 'https://images.rappi.pe/products/2092085495-1686256392321.jpg?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('17', 'Combo Pizza Jamón', 'Pizza familiar jamón, acompañamiento a elección, bebida 1,5 lt a elección', '41.90', 'https://images.rappi.pe/products/8a7288fd-f4bd-460b-bb7d-015a1355eeeb-1665557171970.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('18', 'Combo Pepperonis', '2 Pizzas Familiares 36 cm. pepperoni, Crazy Breads, Crazy Sauce, Bebida 1.5 L. a elección', '76.90', 'https://images.rappi.pe/products/cee09f4c-4397-4464-bb28-8c17c1ef57f1-1651685459687.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('19', 'Combo Especialidad', 'Pizza familiar de especialidad, acompañamiento y bebida 500 ml a elección', '58.90', 'https://images.rappi.pe/products/0a14cab6-4f39-4a11-ab35-4156a42e373e-1666210124927.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('20', 'Combo Supreme X2', '2 Pizzas Familiares 36 cm. supreme, Crazy Breads, Crazy Sauce, Bebida 1.5 L. a elección', '101.90', 'https://images.rappi.pe/products/ac4abb59-e8ba-4ffb-8d04-e3d0749f3439-1665986521403.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('21', 'Combo Fiesta Pepperoni', '2 pizzas tamaño familiar de pepperoni, 1 crazy bread, crazy sauce, pepsi sabor original 2 L', '80.90', 'https://images.rappi.pe/products/49ffe538-fc1c-449e-b557-d6cf8f7dea1d-1665986558819.png?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('22', 'Promoción crazy bread con bebida', '8 Crazy Breads y Crazy Sauce y bebida a elección 500 ml', '17.90', 'https://images.rappi.pe/products/2091470579-1630950535233.jpg?e=webp&d=511x511&q=85', '1');
+INSERT INTO `PRODUCTO` VALUES ('23', 'Super Cheese Pepperoni + Canelitas Combo', 'Pizza familiar pepperoni con borde de abundante queso parmesano y mantequilla de ajo + canelitas combo', '52.40', 'https://images.rappi.pe/products/ff1790ed-645c-47bf-a88d-eef0faabc6ff-1673879995838.png?e=webp&d=511x511&q=85', '1');
+
+/*PIZZAS*/
+INSERT INTO `PRODUCTO` VALUES ('24', 'Pizza Pepperoni', 'Pizza familiar 36 cm., salsa de tomates, cubierta de queso 100% mozzarella, pepperoni.', '29.90', 'https://images.rappi.pe/products/322368-1590454094165.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('25', 'Pizza Extra Extra', 'Pizza familiar mitad extra pepperoni y mitad extra queso', '32.90', 'https://images.rappi.pe/products/2092463156-1721855910598.jpg?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('26', 'Pizza Jamón', 'Pizza familiar 36 cm., salsa de tomates, cubierta de queso 100% mozzarella, cortes de jamón', '33.90', 'https://images.rappi.pe/products/322355-1590454095407.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('27', 'Cu4tro Pizza', 'Pizza familiar 36 cm, con 2 rebanadas de pepperoni, 2 de queso, 2 de salchicha con pepperoni, 2 de pimientos verdes con jamón', '34.90', 'https://images.rappi.pe/products/322372-1590453970734.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('28', 'Pizza Ultimate Supreme', 'Pizza Familiar 36 cm, salsa de tomates, queso, pepperoni, salchicha Italiana, champiñones, cebolla y pimientos verdes', '42.90', 'https://images.rappi.pe/products/322373-1590454093056.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('29', 'Pizza 3 Meat Treat', 'Pizza familiar 36 cm., salsa de tomates, cubierta de queso 100% mozzarella, pepperoni, salchicha italiana y tocino', '42.90', 'https://images.rappi.pe/products/322374-1590453733179.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('30', 'Pizza Hula Hawaiian', 'Pizza familiar 36 cm, salsa de tomates, cubierta de queso 100% mozzarella, jamón y piña', '42.90', 'https://images.rappi.pe/products/322378-1590454096906.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('31', 'Pizza Queso', 'Pizza familiar (36cm),salsa de tomates, cubierta de queso 100% mozzarella', '29.90', 'https://images.rappi.pe/products/530205-1603120566632.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('32', 'Pizza Mitad Pepperoni/salchicha Italiana', 'Pizza mitad de pepperoni, mitad de salchicha italiana', '32.90', 'https://images.rappi.pe/products/d1e2f6da-2113-4b77-8dfc-c0d83ca70a0b-1653491649105.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('33', 'Pizza Especialidad Veggie', 'Pizza familiar 36cm, salsa de tomate, cubierta de queso mozzarella, champiñones, pimientos verdes, cebolla blanca y aceitunas negras.', '42.90', 'https://images.rappi.pe/products/0b0d0b29-728e-47c9-a708-cef26343863a-1665564266569.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('34', 'Super Cheese Jamón', 'Pizza familiar jamón con borde de abundante queso parmesano y mantequilla de ajo', '45.90', 'https://images.rappi.pe/products/2092023604-1690562642264.jpg?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('35', 'Super Cheese Cu4tro', 'Pizza familiar cu4tro con borde de abundante queso parmesano y mantequilla de ajo', '46.90', 'https://images.rappi.pe/products/2092023605-1690562675648.jpg?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('36', 'Super Cheese Pepperoni', 'Pizza familiar pepperoni con borde de abundante queso parmesano y mantequilla de ajo', '39.80', 'https://images.rappi.pe/products/aea26fc6-7265-4acf-8f22-947285f7c14c-1673493212434.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('37', 'Super Cheese Queso', 'Pizza familiar queso con borde de abundante queso parmesano y mantequilla de ajo', '40.90', 'https://images.rappi.pe/products/45fc32e5-d27d-49b0-a85c-796c946c6db9-1680243101013.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('38', 'Super Cheese Veggie', 'Pizza familiar veggie con borde de abundante queso parmesano y mantequilla de ajo', '54.90', 'https://images.rappi.pe/products/b200af87-5d00-446c-8a87-48bc4739e388-1680243442302.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('39', 'Super Cheese Ultimate Supreme', 'Pizza familiar ultimate supreme con borde de abundante queso parmesano y mantequilla de ajo', '54.90', 'https://images.rappi.pe/products/38e6d93f-4899-4eea-9076-ad806e87bfc3-1680243508849.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('40', 'Super Cheese 3 Meat Treat', 'Pizza familiar 3 meat treat con borde de abundante queso parmesano y mantequilla de ajo', '54.90', 'https://images.rappi.pe/products/51174467-a4b7-4fc2-b809-f921300d365e-1680243569560.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('41', 'Super Cheese Hula Hawaiian', 'Pizza familiar hula hawaiian con borde de abundante queso parmesano y mantequilla de ajo', '54.90', 'https://images.rappi.pe/products/df4c4d60-b0f8-4738-bdb5-ff9d28eeba43-1680243645170.png?e=webp&d=511x511&q=85', '2');
+INSERT INTO `PRODUCTO` VALUES ('42', 'Fantastic 4n1', 'Pizza familiar en 4 partes, cubierta hasta el borde con 8 rebanadas: 2 de queso, 2 de pepperoni, 2 de salchicha italiana & tocino y 2 de pepperoni & jalapeño', '40.90', 'https://images.rappi.pe/products/5fbbaaf3-cc36-4910-9b6f-e8c9ef4eef11-1750196557874.png?e=webp&d=511x511&q=85', '2');
+
+/*COMPLEMENTOS*/
+INSERT INTO `PRODUCTO` VALUES ('43', 'Crazy Bread Relleno', '4 palitos de pan, rellenos de mucho queso', '10.90', 'https://images.rappi.pe/products/2092130154-1689873429608.jpg?e=webp&d=511x511&q=85', '3');
+INSERT INTO `PRODUCTO` VALUES ('44', 'Crazy Pops', '4 deliciosas porciones llenas de pepperoni y queso', '14.90', 'https://images.rappi.pe/products/2092460237-1721404386484.jpg?e=webp&d=511x511&q=85', '3');
+INSERT INTO `PRODUCTO` VALUES ('45', 'Canelitas Combo', 'El combo incluye 8 unidades de canelitas y un dip de dulce de leche', '12.50', 'https://images.rappi.pe/products/2091548176-1635191597868.png?e=webp&d=511x511&q=85', '3');
+INSERT INTO `PRODUCTO` VALUES ('46', 'Crazy Bread Relleno + Crazy Sauce', '4 palitos de pan, rellenos de mucho queso + 1 dip de crazy sause', '11.90', 'https://images.rappi.pe/products/2092130155-1689873486503.jpg?e=webp&d=511x511&q=85', '3');
+INSERT INTO `PRODUCTO` VALUES ('47', 'Crazy Breads', '8 palitos gigantes bañados en mantequilla de ajo y espolvoreado con queso parmesano', '8.90', 'https://images.rappi.pe/products/398819-1592835706015.jpg?e=webp&d=511x511&q=85', '3');
+INSERT INTO `PRODUCTO` VALUES ('48', 'Crazy Combo', '8 Crazy Breads y Crazy Sauce', '12.50', 'https://images.rappi.pe/products/403157-1592980357869.jpg?e=webp&d=511x511&q=85', '3');
+INSERT INTO `PRODUCTO` VALUES ('49', 'Hazlo Combo', '8 Crazy Breads o Canelitas, Dip a elección, Bebida 1.5lt a elección', '17.90', 'https://images.rappi.pe/products/7aae16d5-2b34-4f6f-9dcb-6a73a4853f17-1665986635406.png?e=webp&d=511x511&q=85', '3');
+INSERT INTO `PRODUCTO` VALUES ('50', 'Crazy Cheese Bread', '12 Palitos de pan cubiertos con 3 quesos', '15.90', 'https://images.rappi.pe/products/8106f070-e7c0-431a-84b2-42b1a645b3d8-1657547143299.png?e=webp&d=511x511&q=85', '3');
+
+/*DIPS*/
+INSERT INTO `PRODUCTO` VALUES ('51', 'Dip x1', 'Dip a tu elección', '5.00', 'https://images.rappi.pe/products/351190-1590454098253.png?e=webp&d=511x511&q=85', '4');
+INSERT INTO `PRODUCTO` VALUES ('52', 'Dip Dulce de Leche', 'Dip de dulce de leche', '5.00', 'https://images.rappi.pe/products/2091548178-1635191521115.png?e=webp&d=511x511&q=85', '4');
+INSERT INTO `PRODUCTO` VALUES ('53', 'Crazy Sauce', 'Salsa de tomate mezclada con especias', '5.00', 'https://images.rappi.pe/products/351186-1590453971973.png?e=webp&d=511x511&q=85', '4');
+
+/*BEBIDAS*/
+INSERT INTO `PRODUCTO` VALUES ('54', 'Pepsi Sabor Original 2 L', 'Gaseosa', '10.00', 'https://images.rappi.pe/products/351226-1590454158096.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('55', 'Concordia Piña 1.5 L', 'Gaseosa', '7.50', 'https://images.rappi.pe/products/00df5ef2-9236-43b4-929e-dcd972df2e59-1665557204101.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('56', 'Concordia Fresa 500ml', 'Gaseosa', '4.50', 'https://images.rappi.pe/products/d340a99d-35fb-4166-8c35-ef00bcedb792-1665564281184.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('57', 'Pepsi Sabor Original 1.5 L', 'Gaseosa', '7.50', 'https://images.rappi.pe/products/333359-1587485267521.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('58', '7Up Lima Limón Original 1.5 L', 'Gaseosa', '7.50', 'https://images.rappi.pe/products/332850-1587485344495.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('59', '7Up Lima Limón Original 500 ml', 'Gaseosa','4.50', 'https://images.rappi.pe/products/332851-1587485346613.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('60', 'Pepsi Sabor Original 500 ml', 'Gaseosa', '4.50', 'https://images.rappi.pe/products/333360-1587485270952.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('61', 'Concordia Piña 500 ml', 'Gaseosa', '4.50', 'https://images.rappi.pe/products/444987-1619052188002.png?e=webp&d=511x511&q=85', '5');
+INSERT INTO `PRODUCTO` VALUES ('62', 'San Carlos Sin Gas 500 ml', 'Agua Mineral', '4.50', 'https://images.rappi.pe/products/336382-1587685752353.png?e=webp&d=511x511&q=85', '5');
+
+/*CLIENTES*/
+INSERT INTO `CLIENTE` VALUES ('1','Juan', 'Pérez', 'juan.perez@email.com', '123456', 'Calle Falsa 123, Lima', '923456789');
+INSERT INTO `CLIENTE` VALUES ('2','Ana', 'Gómez', 'ana.gomez@email.com', 'miContraseña', 'Avenida Libertad 456, Miraflores', '987654321');
+INSERT INTO `CLIENTE` VALUES ('3','Luis', 'Martínez', 'luis.martinez@email.com', 'password', 'Plaza Mayor 789, La Molina', '956789123');
+INSERT INTO `CLIENTE` VALUES ('4','María', 'López', 'maria.lopez@email.com', 'contraseña123', 'Calle Sol 101, La Libertad', '921654987');
+INSERT INTO `CLIENTE` VALUES ('5','Carlos', 'Rodríguez', 'carlos.rodriguez@email.com', '1234abcd', 'Bulevar del Río 202, Ayachucho', '941258963'); 
+  
+/*EMPLEADOS*/
+INSERT INTO EMPLEADO VALUES
+('1','Carlos', 'Ramírez', 'carlos.ramirez@example.com', 'Pass123!', '987654321'),
+('2','Lucía', 'Fernández', 'lucia.fernandez@example.com', 'Secure456$', '912345678'),
+('3','Jorge', 'Mendoza', 'jorge.mendoza@example.com', 'Clave789#', '934567890'),
+('4','Ana', 'Torres', 'ana.torres@example.com', 'AnaPass321', '945612378'),
+('5','Luis', 'Gómez', 'luis.gomez@example.com', 'LGomez!2023', '956789012'),
+('6','María', 'Paredes', 'maria.paredes@example.com', 'M@ria2024', '967890123'),
+('7','Pedro', 'Salazar', 'pedro.salazar@example.com', 'Pedrito#1', '978901234'),
+('8','Sofía', 'Rivas', 'sofia.rivas@example.com', 'SofiSecure$', '989012345'),
+('9','Diego', 'Castañeda', 'diego.castaneda@example.com', 'Dcasta2023', '900123456'),
+('10','Valeria', 'Lozano', 'valeria.lozano@example.com', 'Val3ria!', '911234567'),
+('11','Andrés', 'Vega', 'andres.vega@example.com', 'AndresV#', '922345678'),
+('12','Camila', 'Silva', 'camila.silva@example.com', 'CamilaS123', '933456789'),
+('13','Ricardo', 'Navarro', 'ricardo.navarro@example.com', 'Ric@rdo2024', '944567890'),
+('14','Paola', 'Aguilar', 'paola.aguilar@example.com', 'PaolaA!', '955678901'),
+('15','Esteban', 'Morales', 'esteban.morales@example.com', 'Est3ban$', '966789012');
+
+/*TIENDAS*/
+INSERT INTO TIENDA VALUES
+('1','SAENZ PEÑA', 'Av Saenz Peña 598 Callao'),
+('2','ARENALES - LINCE', 'Av. Arenales 2695-2691, Lince'),
+('3','AYACUCHO', 'Av Santiago de Surco 3601 Lima, Perú'),
+('4','BARRANCO', 'Pasaje Faustino Sánchez Carrión 110'),
+('5','BENAVIDES', 'Av. Alfredo Benavides 1217 - 1215'),
+('6','BREÑA', 'Av. Venezuela 1251, Breña'),
+('7','CAMINOS DEL INCA', 'Av. Caminos del Inca 2102 Surco'),
+('8','CENTRO HISTÓRICO DE TRUJILLO', 'Jr. Francisco Pizarro 683, Trujillo'),
+('9','CHIMÚ', 'Av. Gran Chimu 1011, San Juan de Lurigancho'),
+('10','CHORRILLOS', 'Av. Defensores del morro 776 (ex huaylas), Chorrillos'),
+('11','ESCARDÓ', 'Av. Rafael Escardó 605, San Miguel'),
+('12','INDEPENDENCIA', 'Av. carlos izaguirre 124, Independencia'),
+('13','LA MARINA', 'Av. La Marina 1628, Lima'),
+('14','LA MOLINA', 'Raúl ferrero 1515 urb sirius, La Molina'),
+('15','LOS OLIVOS', 'Av. Carlos Izaguirre 920, Los Olivos'),
+('16','MISTI', 'Av. Del Ejercito 200, Yanahuara'),
+('17','MIRAFLORES', 'Av. Comandante Espinar 865, Miraflores'),
+('18','PORONGOCHE', 'Av. Porongoche 707, Arequipa'),
+('20','RIVA AGUERO', 'Av. venezuela con av riva agüero E/S Petroamérica, San Miguel'),
+('21','SAN ANDRES', 'Calle San Andrés N° 115, Trujillo - La Libertad'),
+('22','SAN BORJA', 'Av Aviación 2425 - Lima, Perú'),
+('23','SAN JERONIMO', 'Av. San Jeronimo 420-B, Arequipa'),
+('24','SAN LUIS', 'Av Canadá 3723 - San Luis'),
+('25','SAN CARLOS', 'Av. Próceres de la independencia 2774, San Juan de Lurigancho'),
+('26','SAN MARTÍN', 'Av próceres de la independencia 3335, San Juan de Lurigancho'),
+('27','SURCO', 'Av. Aviación 4597 Urb. Higuereta, Surco'),
+('28','SURQUILLO', 'Av. República de Panama 4099'),
+('29','VILLA EL SALVADOR', 'Av. Revolución 1830, Villa El Salvador'),
+('30','ZÁRATE', 'A1C San Juan de Lurigancho 15401');

@@ -1,0 +1,5 @@
+INDEX VERSION 1.134
+D:\C4\LP2\ProyectoWeb09-2025\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2937690645.index
+\Proyecto_ViajeSeguro\src\main\java
+D:\C4\LP2\ProyectoWeb09-2025\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2814991084.index
+\ProyectoCitasMedicas\src\main\java

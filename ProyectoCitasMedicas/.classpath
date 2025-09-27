@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-23"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/resources">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="optional" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="junit"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="test" value="true"/>
+			<attribute name="maven.scope" value="test"/>
+			<attribute name="maven.version" value="3.8.1"/>
+			<attribute name="maven.groupId" value="junit"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.jpa/4.0.7/org.eclipse.persistence.jpa-4.0.7.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="org.eclipse.persistence.jpa"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="4.0.7"/>
+			<attribute name="maven.groupId" value="org.eclipse.persistence"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.asm/9.8.0/org.eclipse.persistence.asm-9.8.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="org.eclipse.persistence.asm"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="9.8.0"/>
+			<attribute name="maven.groupId" value="org.eclipse.persistence"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.core/4.0.7/org.eclipse.persistence.core-4.0.7.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="org.eclipse.persistence.core"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="4.0.7"/>
+			<attribute name="maven.groupId" value="org.eclipse.persistence"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/org/eclipse/persistence/org.eclipse.persistence.jpa.jpql/4.0.7/org.eclipse.persistence.jpa.jpql-4.0.7.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="org.eclipse.persistence.jpa.jpql"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="4.0.7"/>
+			<attribute name="maven.groupId" value="org.eclipse.persistence"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/jakarta/persistence/jakarta.persistence-api/3.1.0/jakarta.persistence-api-3.1.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="jakarta.persistence-api"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="3.1.0"/>
+			<attribute name="maven.groupId" value="jakarta.persistence"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/com/mysql/mysql-connector-j/8.4.0/mysql-connector-j-8.4.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="mysql-connector-j"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="8.4.0"/>
+			<attribute name="maven.groupId" value="com.mysql"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/com/google/protobuf/protobuf-java/3.25.1/protobuf-java-3.25.1.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="protobuf-java"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="3.25.1"/>
+			<attribute name="maven.groupId" value="com.google.protobuf"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/jakarta/servlet/jakarta.servlet-api/5.0.0/jakarta.servlet-api-5.0.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="jakarta.servlet-api"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="provided"/>
+			<attribute name="maven.version" value="5.0.0"/>
+			<attribute name="maven.groupId" value="jakarta.servlet"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/jakarta/servlet/jsp/jakarta.servlet.jsp-api/3.1.1/jakarta.servlet.jsp-api-3.1.1.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="jakarta.servlet.jsp-api"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="provided"/>
+			<attribute name="maven.version" value="3.1.1"/>
+			<attribute name="maven.groupId" value="jakarta.servlet.jsp"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/jakarta/servlet/jsp/jstl/jakarta.servlet.jsp.jstl-api/3.0.0/jakarta.servlet.jsp.jstl-api-3.0.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="jakarta.servlet.jsp.jstl-api"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="3.0.0"/>
+			<attribute name="maven.groupId" value="jakarta.servlet.jsp.jstl"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/jakarta/el/jakarta.el-api/5.0.0/jakarta.el-api-5.0.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="jakarta.el-api"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="5.0.0"/>
+			<attribute name="maven.groupId" value="jakarta.el"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/org/glassfish/web/jakarta.servlet.jsp.jstl/3.0.1/jakarta.servlet.jsp.jstl-3.0.1.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="jakarta.servlet.jsp.jstl"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="3.0.1"/>
+			<attribute name="maven.groupId" value="org.glassfish.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="gson"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="2.11.0"/>
+			<attribute name="maven.groupId" value="com.google.code.gson"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="c:/Users/SUITE/.m2/repository/com/google/errorprone/error_prone_annotations/2.27.0/error_prone_annotations-2.27.0.jar">
+		<attributes>
+			<attribute name="maven.artifactId" value="error_prone_annotations"/>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.scope" value="compile"/>
+			<attribute name="maven.version" value="2.27.0"/>
+			<attribute name="maven.groupId" value="com.google.errorprone"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>
