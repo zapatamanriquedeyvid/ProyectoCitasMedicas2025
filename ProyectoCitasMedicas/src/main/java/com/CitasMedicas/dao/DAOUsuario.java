@@ -2,22 +2,23 @@ package com.CitasMedicas.dao;
 
 import java.util.List;
 
-import com.CitasMedicas.entidad.Medico;
-import com.CitasMedicas.interfaces.InterfaceMedico;
+import com.CitasMedicas.entidad.Usuario;
+import com.CitasMedicas.interfaces.InterfaceUsuario;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-public class DAOMedico implements InterfaceMedico{
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("citasmedicas");
+public class DAOUsuario implements InterfaceUsuario {
+
+  private EntityManagerFactory emf = Persistence.createEntityManagerFactory("citasmedicas");
 
   @Override
-  public void insertar(Medico objM) {
+  public void insertar(Usuario objD) {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
-      em.persist(objM);
+      em.persist(objD);
       em.getTransaction().commit();
       
     } finally {
@@ -26,11 +27,11 @@ public class DAOMedico implements InterfaceMedico{
   }
 
   @Override
-  public void actualizar (Medico objM) {
+  public void actualizar(Usuario objD) {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
-      em.merge(objM);
+      em.merge(objD);
       em.getTransaction().commit();
 
     } finally {
@@ -39,21 +40,21 @@ public class DAOMedico implements InterfaceMedico{
   }
 
   @Override
-  public Medico buscarPorCodigo(int codi) {
+  public Usuario buscarPorCodigo(int codi) {
     EntityManager em = emf.createEntityManager();
     try {
-      return em.find(Medico.class, codi);
+      return em.find(Usuario.class, codi);
     } finally {
       em.close();
     }
   }
 
   @Override
-  public List<Medico> listadoMedicos() {
+  public List<Usuario> listadoUsuarios() {
     EntityManager em = emf.createEntityManager();
     try {
-      //se usa la clase Apoderado
-      return em.createQuery("Select a from Medico a", Medico.class).getResultList(); 
+      //se usa la clase Usuario
+      return em.createQuery("Select d from Usuario d", Usuario.class).getResultList(); 
     } finally {
       em.close();
     }
@@ -63,7 +64,7 @@ public class DAOMedico implements InterfaceMedico{
   public void eliminar(int codi) {
     EntityManager em = emf.createEntityManager();
     try {
-      Medico a = em.find(Medico.class, codi);
+      Usuario a = em.find(Usuario.class, codi);
       if (a != null) {
         em.getTransaction().begin();
         em.remove(a);

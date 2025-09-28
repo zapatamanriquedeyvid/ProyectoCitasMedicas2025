@@ -1,13 +1,12 @@
 package com.CitasMedicas.prueba;
 
-import com.CitasMedicas.dao.DAOPasajero;
-import com.CitasMedicas.entidad.Pasajero;
+
 
 public class PruebaPasajero {
 
 	public static void main(String[] args) {
 		//Crear un objeto de tipo DAOPasajero
-		DAOPasajero objDP=new DAOPasajero();
+		//DAOPasajero objDP=new DAOPasajero();
 		//insertando registro
 		//declarar y crear un objeto de tipo pasajero
 		/* Pasajero p=new Pasajero();
@@ -43,8 +42,8 @@ public class PruebaPasajero {
 	//	}
 		
 		//eliminando un pasajero
-		objDP.eliminar(6);
-		System.out.println("Eliminado correctamente");
+		//objDP.eliminar(6);
+		//System.out.println("Eliminado correctamente");
 		
 				
 	}

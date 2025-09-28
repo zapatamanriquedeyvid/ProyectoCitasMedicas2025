@@ -120,7 +120,7 @@ ADD CONSTRAINT `uq_contrausu` UNIQUE (`nom_usuario`);
 -- Medico
 ALTER TABLE medico
 ADD CONSTRAINT `uq_dnimed` UNIQUE (`dni_medico`),
-ADD CONSTRAINT `chk_dnimed` CHECK (`dni_medico` LIKE '[0-9]{8}'),
+ADD CONSTRAINT `chk_dnimed` CHECK (`dni_medico` LIKE '[0-9]{8}$'),
 ADD CONSTRAINT `uq_telfmed` UNIQUE (`telef_medico`),
 ADD CONSTRAINT `chk_telfmed` CHECK (`telef_medico` REGEXP '9[0-9]{8}$'),
 ADD CONSTRAINT `uq_correomed` UNIQUE (`correo_medico`),
@@ -161,3 +161,5 @@ values('dni', '98765432', 'juanito', 'perez perez', 'padre', '987654321', 'perez
 insert into 
   paciente (tipo_documento, nro_documento, nombre_paciente, apellido_paterno, apellido_materno, fecha_nac, sexo, lugar_naci, procedencia, tipo_paciente, id_apod)
 values('dni','87654321','pedro','perez','mamani','2025-09-27','M','su casa','lima','SIS',1);
+
+DELETE FROM paciente WHERE id_paciente=2;

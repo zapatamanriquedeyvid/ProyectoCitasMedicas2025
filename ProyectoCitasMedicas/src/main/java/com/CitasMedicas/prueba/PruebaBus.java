@@ -4,9 +4,7 @@ import java.security.PrivateKey;
 import java.sql.Date;
 import java.sql.Time;
 
-import com.CitasMedicas.dao.DAOBus;
-import com.CitasMedicas.entidad.Bus;
-import com.CitasMedicas.entidad.Marca;
+
 
 public class PruebaBus {
 

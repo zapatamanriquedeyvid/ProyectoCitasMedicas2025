@@ -47,12 +47,7 @@
     <scope>provided</scope>
 </dependency>
 
-<!-- JSTL (para usar <c:forEach>, etc.) -->
-<dependency>
-    <groupId>jakarta.servlet.jsp.jstl</groupId>
-    <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-    <version>3.0.0</version>
-</dependency> 
+
 
    <dependency>
     <groupId>org.glassfish.web</groupId>
@@ -68,12 +63,36 @@
     <version>2.11.0</version>
 </dependency>
     
-    
+  <dependencyManagement>
+  <dependencies>
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>3.0.0</version>
+    </dependency>
   </dependencies>
+</dependencyManagement>
 
+    
+</dependencies>
 
+<properties>
+  <maven.compiler.source>22</maven.compiler.source>
+  <maven.compiler.target>22</maven.compiler.target>
+</properties>
 
   <build>
-    <finalName>Proyecto_ViajeSeguro</finalName>
+    <finalName>Proyecto_CitasMedicas2025</finalName>
+      <plugins>
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.11.0</version> 
+      <configuration>
+        <source>22</source>
+        <target>22</target>
+      </configuration>
+    </plugin>
+  </plugins>
   </build>
 </project>

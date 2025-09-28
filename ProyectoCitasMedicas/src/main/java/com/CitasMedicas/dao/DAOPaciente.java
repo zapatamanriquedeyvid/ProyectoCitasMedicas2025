@@ -2,9 +2,7 @@ package com.CitasMedicas.dao;
 
 import java.util.List;
 
-import com.CitasMedicas.entidad.Bus;
 import com.CitasMedicas.entidad.Paciente;
-import com.CitasMedicas.entidad.Pasajero;
 import com.CitasMedicas.interfaces.InterfacePaciente;
 
 import jakarta.persistence.EntityManager;
@@ -51,6 +49,7 @@ public class DAOPaciente implements InterfacePaciente{
     }
   }
 
+
   @Override
   public List<Paciente> listadoPacientes() {
     EntityManager em = emf.createEntityManager();
@@ -66,17 +65,33 @@ public class DAOPaciente implements InterfacePaciente{
   public void eliminar(int codi) {
     EntityManager em = emf.createEntityManager();
     try {
-      //declarar un objeto de tipo Pasajero
-      Pasajero pa = em.find(Pasajero.class, codi);
+      Paciente p = em.find(Paciente.class, codi);
       //validar pa
-      if (pa!= null) {
+      if (p!= null) {
         em.getTransaction().begin();
-        em.remove(pa);
+        em.remove(p);
         em.getTransaction().commit();
       }
-    } finally {
+    }catch (Exception e) {
+      e.printStackTrace();
+      em.getTransaction().rollback();
+      System.out.println("Error al eliminar paciente");
+    }finally {
       em.close();
     }
   }
+
+  public Paciente buscarPorDni(int dni) {
+    EntityManager em = emf.createEntityManager();
+    try {
+      return em.createQuery("SELECT p FROM Paciente p WHERE p.nro_documento = :dni", Paciente.class)
+      .setParameter("dni", dni)
+      .getSingleResult();
+    } catch (Exception e) {
+        return null;
+    } finally {
+        em.close();
+    }
+}
 
 }
