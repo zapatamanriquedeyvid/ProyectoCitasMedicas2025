@@ -24,6 +24,9 @@ jobs:
           java-version: '17'
           distribution: 'microsoft'
 
+      - name: Change to project directory
+        run: cd ProyectoCitasMedicas
+
       - name: Build with Maven
         run: mvn clean install
 
@@ -62,3 +65,4 @@ jobs:
           package: '*.war'
 
           
+
