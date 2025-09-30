@@ -50,15 +50,21 @@ public class PruebasDAO {
     //   System.out.println("-------------------------------");
     // }
 
+  System.out.println("Listado de pacientes");
+	objP.listadoPacientes().forEach(pa-> System.out.println(pa.getId_paciente()+ " - " +
+    pa.getNombre_paciente()+ " - " +
+    pa.getApellido_paterno()+ " - " +
+    pa.getNro_documento()));
+
     //eliminar paciente
     //objP.eliminar(3);
 
-    //codigo para buscar un pasajero
-		Paciente busca=objP.buscarPorDni(87654321);
-		if(busca!=null) {
-      //buscar paciente por codgio
-      System.out.println("Registro:\n"+busca.getId_paciente()+" - "+busca.getNombre_paciente()+" - "+busca.getApellido_paterno()+" - "+busca.getNro_documento());
-		}
+    //codigo para buscar un paciente
+		// Paciente busca=objP.buscarPorDni(87654321);
+		// if(busca!=null) {
+    //   //buscar paciente por codgio
+    //   System.out.println("Registro:\n"+busca.getId_paciente()+" - "+busca.getNombre_paciente()+" - "+busca.getApellido_paterno()+" - "+busca.getNro_documento());
+		// }
 
     //actualizar el telefono y correo del pasajero con codigo 3
     // if(busca!=null) {

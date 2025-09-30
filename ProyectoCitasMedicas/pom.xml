@@ -62,16 +62,11 @@
     <artifactId>gson</artifactId>
     <version>2.11.0</version>
 </dependency>
-    
-  <dependencyManagement>
-  <dependencies>
     <dependency>
       <groupId>jakarta.servlet.jsp.jstl</groupId>
       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
       <version>3.0.0</version>
     </dependency>
-  </dependencies>
-</dependencyManagement>
 
     
 </dependencies>
