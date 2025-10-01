@@ -23,25 +23,20 @@ jobs:
         with:
           java-version: '17'
           distribution: 'microsoft'
-
-      - name: Build WAR from subdirectory
-        run: cd ProyectoCitasMedicas && mvn clean package
-        
-      - name: Change to project directory
-        run: cd ProyectoCitasMedicas
-
-      - name: Build with Maven
-        run: mvn clean install
-        
+          
       - name: Verify pom.xml exists
         run: test -f ProyectoCitasMedicas/pom.xml
+
+      - name: Build WAR from subdirectory
+        working-directory: ProyectoCitasMedicas
+        run: mvn clean package
 
 
       - name: Upload WAR artifact
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.war'
+          path: ProyectoCitasMedicas/target/*.war
 
   deploy:
     runs-on: windows-latest
@@ -69,8 +64,9 @@ jobs:
         with:
           app-name: 'ProyectoWeb09-2025'
           slot-name: 'Production'
-          package: '${{ github.workspace }}/ProyectoCitasMedicas/target/*.war'
+          package: ProyectoCitasMedicas/target/*.war
 
           
+
 
 
