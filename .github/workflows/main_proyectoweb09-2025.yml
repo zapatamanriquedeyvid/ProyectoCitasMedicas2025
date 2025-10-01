@@ -38,6 +38,10 @@ jobs:
           name: java-app
           path: ProyectoCitasMedicas/target/*.war
 
+      - name: List WAR files
+        run: ls ProyectoCitasMedicas/target/*.war
+
+
   deploy:
     runs-on: windows-latest
     needs: build
@@ -64,9 +68,10 @@ jobs:
         with:
           app-name: 'ProyectoWeb09-2025'
           slot-name: 'Production'
-          package: ProyectoCitasMedicas/target/*.war
+          package: '*.war'
 
           
+
 
 
 
