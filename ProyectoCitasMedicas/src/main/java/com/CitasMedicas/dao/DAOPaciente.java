@@ -1,6 +1,8 @@
 package com.CitasMedicas.dao;
 
+
 import java.util.List;
+
 
 import com.CitasMedicas.entidad.Paciente;
 import com.CitasMedicas.interfaces.InterfacePaciente;
@@ -20,7 +22,7 @@ public class DAOPaciente implements InterfacePaciente{
       em.getTransaction().begin();
       em.persist(objB);
       em.getTransaction().commit();
-      
+
     } finally {
       em.close();
     }
@@ -33,8 +35,8 @@ public class DAOPaciente implements InterfacePaciente{
       em.getTransaction().begin();
       em.merge(objB);
       em.getTransaction().commit();
-      
-    } finally {
+
+    }finally {
       em.close();
     }
   }
@@ -49,8 +51,24 @@ public class DAOPaciente implements InterfacePaciente{
     }
   }
 
+    @Override
+    public Paciente buscarPorDni(int dni) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            // Se usa la clase Paciente
+            return em.createQuery("SELECT p FROM Paciente p WHERE p.nro_documento = :dni", Paciente.class)
+                    .setParameter("dni", dni)
+                    .getSingleResult();
+        }catch(Exception e){
+            return null;
+        }
+        finally {
+            em.close();
+        }
+    }
 
-  @Override
+
+    @Override
   public List<Paciente> listadoPacientes() {
     EntityManager em = emf.createEntityManager();
     try {
@@ -60,6 +78,8 @@ public class DAOPaciente implements InterfacePaciente{
       em.close();
     }
   }
+
+
 
   @Override
   public void eliminar(int codi) {
@@ -81,17 +101,5 @@ public class DAOPaciente implements InterfacePaciente{
     }
   }
 
-  public Paciente buscarPorDni(int dni) {
-    EntityManager em = emf.createEntityManager();
-    try {
-      return em.createQuery("SELECT p FROM Paciente p WHERE p.nro_documento = :dni", Paciente.class)
-      .setParameter("dni", dni)
-      .getSingleResult();
-    } catch (Exception e) {
-        return null;
-    } finally {
-        em.close();
-    }
-}
 
 }

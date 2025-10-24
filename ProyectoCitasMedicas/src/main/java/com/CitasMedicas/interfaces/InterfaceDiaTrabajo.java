@@ -9,5 +9,6 @@ public interface InterfaceDiaTrabajo {
 	public void actualizar (DiaTrabajo objDT);
 	public DiaTrabajo buscarPorCodigo(int codi);
 	public List<DiaTrabajo>listadoDiasTrabajo();
+	public List<DiaTrabajo> listarPorMedico(int idMedico);
 	public void eliminar (int codi) ;
 }

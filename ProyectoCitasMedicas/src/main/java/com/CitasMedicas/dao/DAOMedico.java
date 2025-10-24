@@ -26,7 +26,7 @@ public class DAOMedico implements InterfaceMedico{
   }
 
   @Override
-  public void actualizar (Medico objM) {
+  public void actualizar(Medico objM) {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
@@ -71,6 +71,31 @@ public class DAOMedico implements InterfaceMedico{
       }
     } finally {
       em.close();
+    }
+  }
+  
+  //llamar medicos por especialidad
+  public List<Medico> listarMedicosPorEspecialidad(int especialidadId) {
+	EntityManager em = emf.createEntityManager();
+	try {
+	  return em.createQuery("SELECT m FROM Medico m WHERE m.especialidad.id_especialidad = :especialidadId", Medico.class)
+			   .setParameter("especialidadId", especialidadId)
+			   .getResultList();
+	} finally {
+	  em.close();
+	}
+  }
+
+  public Medico obtenerPorIdUsuario(int idUsuario){
+    	EntityManager em = emf.createEntityManager();
+    try {
+      return em.createQuery("SELECT m FROM Medico m WHERE m.usuario.idUsuario = :id", Medico.class)
+      .setParameter("id", idUsuario)
+      .getSingleResult();
+    } catch (Exception e) {
+        return null;
+    } finally {
+        em.close();
     }
   }
 }

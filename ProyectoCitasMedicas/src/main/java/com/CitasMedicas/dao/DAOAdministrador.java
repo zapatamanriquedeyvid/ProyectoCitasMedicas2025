@@ -11,7 +11,7 @@ import jakarta.persistence.Persistence;
 
 public class DAOAdministrador implements InterfaceAdministrador {
 
-  private EntityManagerFactory emf = Persistence.createEntityManagerFactory("CitasMedicas");
+  private EntityManagerFactory emf = Persistence.createEntityManagerFactory("citasmedicas");
   
   @Override
   public void insertar(Administrador objE) {
@@ -75,4 +75,17 @@ public class DAOAdministrador implements InterfaceAdministrador {
     }
   }
 
+  @Override
+  public Administrador obtenerPorIdUsuario(int idUsuario) {
+	EntityManager em = emf.createEntityManager(); 
+    try {
+      return em.createQuery("SELECT a FROM Administrador a WHERE a.usuario.idUsuario = :id", Administrador.class)
+      .setParameter("id", idUsuario)
+      .getSingleResult();
+    } catch (Exception e) {
+        return null;
+    } finally {
+        em.close();
+    }
+  }
 }

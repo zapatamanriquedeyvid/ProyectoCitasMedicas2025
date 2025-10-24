@@ -71,13 +71,21 @@ private Medico medico;
     return paciente;
   }
   public void setPaciente(Paciente paciente) {
-    this.paciente = paciente;
+    this.paciente = paciente; 
   }
   public Medico getMedico() {
     return medico;
   }
   public void setMedico(Medico medico) {
     this.medico = medico;
+  }
+  
+  @PrePersist
+  public void establecerEstadoPorDefecto() {
+    if (estado == null && tipo_atencion == null) {
+    	estado = "PENDIENTE";
+    	tipo_atencion = "CONSULTA MEDICA";
+    }
   }
 
 }

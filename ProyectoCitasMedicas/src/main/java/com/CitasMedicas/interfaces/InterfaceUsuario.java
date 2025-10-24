@@ -10,4 +10,5 @@ public interface InterfaceUsuario {
 	public Usuario buscarPorCodigo(int codi);
 	public List<Usuario>listadoUsuarios();
 	public void eliminar (int codi) ;
+	public Usuario validar(String username,String password, String tipoUsuario);
 }

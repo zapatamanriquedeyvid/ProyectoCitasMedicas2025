@@ -11,7 +11,7 @@ import jakarta.persistence.Persistence;
 
 public class DAOEspecialidad implements InterfaceEspecialidad {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("citasMedicas");
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("citasmedicas");
     
     
     @Override
@@ -28,7 +28,7 @@ public class DAOEspecialidad implements InterfaceEspecialidad {
 
     @Override
     public void actualizar(Especialidad objE) {
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = emf.createEntityManager(); 
         try {
             em.getTransaction().begin();
             em.persist(objE);
@@ -72,6 +72,7 @@ public class DAOEspecialidad implements InterfaceEspecialidad {
             em.close();
         }        
     }
+    
 
 }
   

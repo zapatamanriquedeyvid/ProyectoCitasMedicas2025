@@ -3,7 +3,6 @@ package com.CitasMedicas.dao;
 import java.util.List;
 
 import com.CitasMedicas.entidad.DiaTrabajo;
-import com.CitasMedicas.entidad.Paciente;
 import com.CitasMedicas.interfaces.InterfaceDiaTrabajo;
 
 import jakarta.persistence.EntityManager;
@@ -12,7 +11,7 @@ import jakarta.persistence.Persistence;
 
 public class DAODiaTrabajo implements InterfaceDiaTrabajo {
 
-  private EntityManagerFactory emf = Persistence.createEntityManagerFactory("CitasMedicas");
+  private EntityManagerFactory emf = Persistence.createEntityManagerFactory("citasmedicas");
   
   @Override
   public void insertar(DiaTrabajo objDT) {
@@ -60,6 +59,19 @@ public class DAODiaTrabajo implements InterfaceDiaTrabajo {
       em.close();
     }
   }
+  
+	@Override
+	public List<DiaTrabajo> listarPorMedico(int idMedico) {
+	    EntityManager em = emf.createEntityManager();
+	    try {
+	        return em.createQuery(
+	            "SELECT d FROM DiaTrabajo d WHERE d.medico.id_medico = :idMedico", DiaTrabajo.class)
+	            .setParameter("idMedico", idMedico)
+	            .getResultList();
+	    } finally {
+	        em.close();
+	    }
+	}
 
   @Override
   public void eliminar(int codi) {

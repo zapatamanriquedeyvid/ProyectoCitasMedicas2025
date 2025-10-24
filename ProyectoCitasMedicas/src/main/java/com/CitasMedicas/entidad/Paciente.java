@@ -30,7 +30,7 @@ public class Paciente{
 	private Apoderado apoderado;
 
   @OneToMany(mappedBy = "paciente",cascade = CascadeType.ALL)
-    
+     
     //getters and setters
     public int getId_paciente() {
         return id_paciente;

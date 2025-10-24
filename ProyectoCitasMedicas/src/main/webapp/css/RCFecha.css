@@ -1,0 +1,78 @@
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.a{
+  width: 600px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+
+}
+.b{
+  width: 400px;
+  text-align: center;
+}
+.c{
+  width: max-content;
+  input{
+    width: 100px;
+  }
+}
+/* styles.css */
+body {
+   font-family: Arial, sans-serif;
+  padding: 2rem;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.time-card {
+  cursor: pointer;
+  flex: 1 1;
+  width: 400px;
+  height: max-content;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.time-card input[type="radio"] {
+  display: none;
+}
+.time-card:hover {
+	transform: scale(1.02);
+}
+
+.card-content {
+  padding: 1rem;
+  text-align: center;
+}
+
+
+
+/* Estilo cuando está seleccionado */
+.time-card input[type="radio"]:checked + .card-content {
+  border: 2px solid #0078D7;
+  border-radius: 8px;
+  background-color: #e6f0ff;
+  position: relative;
+}
+
+.time-card input[type="radio"]:checked + .card-content::after {
+  content: "✔";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.2rem;
+  color: #0078D7;
+}

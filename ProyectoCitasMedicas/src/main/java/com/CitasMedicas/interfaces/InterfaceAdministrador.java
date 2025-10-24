@@ -9,5 +9,7 @@ public interface InterfaceAdministrador {
 	public void actualizar (Administrador objE);
 	public Administrador buscarPorCodigo(int codi);
 	public List<Administrador>listadoAdministradores();
-	public void eliminar (int codi) ;
+	public void eliminar (int codi);
+    public Administrador obtenerPorIdUsuario(int idUsuario);
+
 }

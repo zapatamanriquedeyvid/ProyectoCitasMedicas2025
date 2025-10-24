@@ -14,7 +14,8 @@ public class Medico {
     private String apellido_medico;
     private String telef_medico;
     private String correo_medico;
-
+    private String anios_servicio;
+	private String url_perfil;
     @OneToOne
     @JoinColumn (name = "id_usuario", nullable = false)
     private Usuario usuario;
@@ -72,6 +73,24 @@ public class Medico {
     public void setCorreo_medico(String correo_medico) {
         this.correo_medico = correo_medico;
     }
+    
+    
+    public String getAnios_servicio() {
+        return anios_servicio;
+    }
+
+    public void setAnios_Servicio(String anios_servicio) {
+        this.anios_servicio = anios_servicio;
+    }
+    
+    public String getUrl_perfil() {
+        return url_perfil;
+    }
+
+    public void setUrl_perfilo(String url_perfil) {
+        this.url_perfil = url_perfil;
+    }
+    
     public Usuario getUsuario() {
         return usuario;
     }

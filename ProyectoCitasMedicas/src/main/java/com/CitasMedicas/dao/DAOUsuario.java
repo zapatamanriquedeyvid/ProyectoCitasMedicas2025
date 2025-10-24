@@ -74,4 +74,19 @@ public class DAOUsuario implements InterfaceUsuario {
       em.close();
     }
   }
+@Override
+public Usuario validar(String username, String password, String tipoUsuario) {
+	EntityManager em = emf.createEntityManager();
+    try {
+      return em.createQuery("SELECT u FROM Usuario u WHERE u.nom_usuario = :username AND u.contraseña = :password  AND u.cargo = :tipo", Usuario.class)
+      .setParameter("username", username)
+      .setParameter("password",password)
+      .setParameter("tipo", tipoUsuario)
+      .getSingleResult();
+    } catch (Exception e) {
+        return null;
+    } finally {
+        em.close();
+    }
+}
 }

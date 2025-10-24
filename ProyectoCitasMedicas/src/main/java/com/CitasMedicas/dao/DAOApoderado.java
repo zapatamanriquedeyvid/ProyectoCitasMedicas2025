@@ -14,12 +14,13 @@ public class DAOApoderado implements InterfaceApoderado{
   private EntityManagerFactory emf = Persistence.createEntityManagerFactory("citasmedicas");
 
   @Override
-  public void insertar(Apoderado objA) {
+  public int insertar(Apoderado objA) {
     EntityManager em = emf.createEntityManager();
     try {
       em.getTransaction().begin();
       em.persist(objA);
       em.getTransaction().commit();
+      return objA.getId_apod();
       
     } finally {
       em.close();
@@ -47,6 +48,22 @@ public class DAOApoderado implements InterfaceApoderado{
     } finally {
       em.close();
     }
+  }
+  
+  public Apoderado buscarPorDni(int dni) {
+	EntityManager em = emf.createEntityManager();
+	try {
+	  List<Apoderado> resultados = em.createQuery("SELECT a FROM Apoderado a WHERE a.nro_documento = :dni", Apoderado.class)
+									 .setParameter("dni", dni)
+									 .getResultList();
+	  if (resultados.isEmpty()) {
+		return null; // No se encontró ningún apoderado con ese DNI
+	  } else {
+		return resultados.get(0); // Retorna el primer apoderado encontrado
+	  }
+	} finally {
+	  em.close();
+	}
   }
 
   @Override

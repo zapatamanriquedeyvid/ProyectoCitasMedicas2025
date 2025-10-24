@@ -1,0 +1,450 @@
+html,body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  height: 100%;
+  margin: 0;
+ 
+}
+
+main{
+	width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+form{
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.principal{
+	max-width: 100%;
+	
+}
+
+
+
+.wizard-container {
+  width: 1200px;
+  margin:0;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.wizard-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 20px;
+}
+
+.step {
+  text-align: center;
+  flex: 1;
+  position: relative;
+}
+
+.circle {
+  width: 40px;
+  height: 40px;
+  margin: auto;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: white;
+  font-weight: bold;
+  line-height: 40px;
+  font-size: 18px;
+}
+
+.step.active .circle {
+  background-color: #007bff;
+}
+
+.step span {
+  display: block;
+  margin-top: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  text-align: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: max-content;
+}
+.time-card {
+  cursor: pointer;
+  width:400px;
+  height: 150px;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  background: rgb(255, 255, 255);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.time-card:hover {
+  transform: scale(1.02);
+}
+
+.time-card input[type="radio"] {
+  display: none;
+}
+.card-content {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Alinea el contenido en columna */
+  max-width: 500px;
+  min-width: 400px;
+  height: 100%;
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+}
+
+/* Estilo cuando está seleccionado */
+.time-card input[type="radio"]:checked + .card-content{
+  border: 2px solid #0078D7;
+  border-radius: 8px;
+  background-color: #e6f0ff;
+  position: relative;
+}
+
+
+.time-card input[type="radio"]:checked + .card-content::after{
+  content: "✔";
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.2rem;
+  color: #0078D7; 
+}
+
+
+.botones{
+  width: 70%;
+  display:flex;
+  justify-content: space-between;
+  margin-bottom:20px;
+  
+  button {
+	  background-color: #5A7FFF;
+	  margin:15px;
+	  color: white;
+	  font-weight: 600;
+	  border: none;
+	  padding: 10px 20px;
+	  cursor: pointer;
+	  font-size: 16px;
+	  transition: background-color 0.3s ease;
+	  border-radius: 10px;
+  }
+}
+
+.botones button:hover {
+  background-color: #4666d1;
+}
+
+
+/* 🔹 Botón Atrás (gris) */
+.botones a {
+  text-decoration: none;
+  background-color: #6c757d;
+  color: white;
+  font-weight: 600;
+  border: none;
+  padding: 10px 20px;
+  margin: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  border-radius: 10px;
+  display: inline-block; 
+}
+
+.botones a:hover {
+  background-color: #5a6268;
+}
+/* ------------------JSP MEDICOS------------------------- */
+.medicoContent{
+     display:flex;
+     text-align:center;
+     justify-content:center;
+     align-items:center;
+     max-width: 500px;
+  	 min-width: 400px;
+     height: 100%;
+}
+.time-card input[type="radio"]:checked + .medicoContent{
+  border: 2px solid #0078D7;
+  border-radius: 8px;
+  background-color: #e6f0ff;
+  position: relative;
+}
+.time-card input[type="radio"]:checked + .medicoContent::after{
+  content: "✔";
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 1.2rem;
+  color: #0078D7; 
+}
+/* ------------------JSP HORARIOS------------------------- */
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.buscador{
+  width: 600px;
+  text-align:center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+ 
+}
+.fecha{
+  width: 400px;
+  margin-right:20px;
+  display:flex;
+  text-align: center;
+}
+.botonfecha{
+  width: max-content;
+  input{
+    width: 100px;
+  }
+}
+
+.card-contentFecha {
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column; /* Alinea el contenido en columna */
+  max-width: 500px;
+  min-width: 400px;
+  height: 100%;
+  box-sizing: border-box;
+  color: black;
+}
+
+.ContenedorHorarios {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 40px;
+  text-align: center;
+  align-items:center;
+}
+
+.horario {
+  cursor: pointer;
+  background-color:green;
+  width: 400px;
+  height: max-content;
+  border-radius: 8px;
+  transition: border-color 0.3s ease;
+  background: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.horario input[type="radio"] {
+  display: none;
+}
+.horario:hover {
+	transform: scale(1.02);
+}
+
+.contenido {
+  padding: 1rem;
+  text-align: center;
+  background:yellow;
+}
+.horario input[type="radio"]:checked + .contenido {
+  border: 2px solid #0078D7;
+  border-radius: 8px;
+  background-color: #e6f0ff;
+  position: relative;
+}
+
+
+.horario input[type="radio"]:checked + .contenido::after {
+  content: "✔";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 1.2rem;
+  color: #0078D7;
+}
+
+/* ------------------MENSAJE ERROR------------------------- */
+.error-box {
+  background-color: #ff4d4d;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(255, 77, 77, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative; 
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: showError 4s ease-in-out forwards;
+  margin-top: 20px;
+}
+
+.icon {
+  font-size: 2rem;
+  animation: pulse 1s ease-in-out 3; /* solo 3 veces */
+}
+
+/* Animación de aparición, vibración y desaparición */
+@keyframes showError {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  10%, 80% {
+    opacity: 1;
+    transform: translateY(0);
+    animation-timing-function: ease-in-out;
+  }
+  20%, 40%, 60% {
+    transform: translateX(-5px);
+  }
+  30%, 50%, 70% {
+    transform: translateX(5px);
+  }
+  90%, 100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }  
+}
+
+/* Pulso del ícono */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Borde que parpadea */
+.error-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  animation: glow 1.5s ease-in-out 3;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
+
+/* ------------------JSP DETALLE------------------------- */
+:root {
+  --color-primario: #0066cc;
+  --color-secundario: #f0f8ff;
+  --color-texto: #333;
+  --color-borde: #d0d0d0;
+  --color-confirmar: #28a745;
+  --color-confirmar-hover: #218838;
+  --fuente: 'Roboto', sans-serif;
+}
+
+
+.resumen-cita {
+  max-width: 720px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 1px solid var(--color-borde);
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.1);
+}
+
+.resumen-cita h2 {
+  text-align: center;
+  color: var(--color-primario);
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.resumen-cita h3 {
+  color: var(--color-primario);
+  font-size: 1.2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-primario);
+  padding-bottom: 0.3rem;
+}
+
+.resumen-cita ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.resumen-cita li {
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--color-borde);
+  color: var(--color-texto);
+}
+
+.resumen-cita li strong {
+  color: #000;
+}
+
+.confirmacion {
+  margin-top: 2rem;
+  text-align: center;
+  background-color: #e6f2ff;
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid #cce0ff;
+}
+
+.confirmacion p {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: var(--color-texto);
+}
+
+.btn-confirmar {
+  background-color: var(--color-confirmar);
+  color: white;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-confirmar:hover {
+  background-color: var(--color-confirmar-hover);
+}

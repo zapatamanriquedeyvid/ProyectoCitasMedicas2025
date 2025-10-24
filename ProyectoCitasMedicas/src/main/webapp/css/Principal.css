@@ -1,0 +1,48 @@
+
+
+.titulo-principal {
+    font-size: 2.8rem;
+    color: #4B0082;
+    font-weight: bold;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin-bottom: 1rem;
+}
+
+.subtitulo {
+    font-size: 2rem;
+    color: #007bff;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.card-title {
+    color: #4B0082;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #333;
+}
+
+footer {
+    background: linear-gradient(90deg, #4B0082 0%, #007bff 100%);
+    font-size: 1rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    color: #4B0082 !important;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: #007bff !important;
+    text-decoration: underline;
+}

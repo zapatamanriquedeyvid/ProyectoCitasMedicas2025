@@ -9,6 +9,12 @@
         <!-- Entidades JPA (se van agregando aquí) -->
        <class>com.CitasMedicas.entidad.Paciente</class>
 	   <class>com.CitasMedicas.entidad.Apoderado</class>
+	   <class>com.CitasMedicas.entidad.Cita</class>
+	   <class>com.CitasMedicas.entidad.Medico</class>
+	   <class>com.CitasMedicas.entidad.Usuario</class>
+	   <class>com.CitasMedicas.entidad.DiaTrabajo</class>
+	   <class>com.CitasMedicas.entidad.Especialidad</class>
+        <class>com.CitasMedicas.entidad.Administrador</class>
         
         <properties>
         

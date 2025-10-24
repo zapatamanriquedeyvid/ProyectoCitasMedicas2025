@@ -1,6 +1,5 @@
 package com.CitasMedicas.entidad;
 
-import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -11,6 +10,7 @@ public class Administrador {
 
 @Id
 @GeneratedValue (strategy =GenerationType.IDENTITY)
+
 private int id_administrador;
 private int dni_admin;
 private String nombre_admin;

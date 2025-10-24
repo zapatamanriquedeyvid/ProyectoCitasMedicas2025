@@ -1,11 +1,10 @@
 package com.CitasMedicas.entidad;
 
-import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,19 +12,18 @@ import jakarta.persistence.Table;
 public class Usuario {
   @Id
   @GeneratedValue (strategy = GenerationType.IDENTITY)
-  private int id_usuario;
+  @Column(name = "id_usuario")
+  private int idUsuario;
   private String nom_usuario;
   private String contraseña;
   private String cargo;
 
-  @OneToOne(mappedBy = "medico",cascade = CascadeType.ALL)
-
   //getters y setters
-  public int getId_usuario() {
-    return id_usuario;
+  public int getIdUsuario() {
+    return idUsuario; 
   }
-  public void setId_usuario(int id_usuario) {
-    this.id_usuario = id_usuario;
+  public void setId_usuario(int idUsuario) {
+    this.idUsuario = idUsuario;
   }
   public String getNom_usuario() {
     return nom_usuario;
